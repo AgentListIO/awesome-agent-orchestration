@@ -1,0 +1,143 @@
+{
+  "title": "Awesome Agent Orchestration",
+  "subtitle": "Coordinate agents, tools, and human decisions.",
+  "description": "Frameworks and visual tools for agent coordination, durable workflows, and human approvals.",
+  "scope": "Tools that compose agent steps, delegate work, or manage multi-agent workflows. Coding-agent clients and model-routing gateways are separate categories. Frameworks require application code; visual builders provide an authoring interface.",
+  "questions": [
+    "Does it coordinate tool calls, multiple agents, deterministic workflow steps, or all three?",
+    "Can work pause for approval, recover from a failure, and resume with its state intact?",
+    "Which parts run locally, on your infrastructure, or in a vendor-managed service?"
+  ],
+  "sections": [
+    {
+      "title": "Code-first frameworks",
+      "projects": [
+        {
+          "name": "Agno",
+          "url": "https://github.com/agno-agi/agno",
+          "description": "Python framework for building agents, teams, and workflows.",
+          "kind": "Python framework",
+          "source": "https://github.com/agno-agi/agno#readme",
+          "checked": "2026-09-29"
+        },
+        {
+          "name": "CrewAI",
+          "url": "https://github.com/crewAIInc/crewAI",
+          "description": "Framework for composing role-based agent teams and execution flows.",
+          "kind": "Python framework",
+          "source": "https://github.com/crewAIInc/crewAI#readme",
+          "checked": "2026-09-29"
+        },
+        {
+          "name": "Google ADK",
+          "url": "https://github.com/google/adk-python",
+          "description": "Python toolkit for composing agents and workflow execution.",
+          "kind": "Python SDK",
+          "source": "https://github.com/google/adk-python#readme",
+          "checked": "2026-09-29"
+        },
+        {
+          "name": "LangGraph",
+          "url": "https://github.com/langchain-ai/langgraph",
+          "description": "Graph-based orchestration framework for long-running, stateful agent workflows.",
+          "kind": "Python and JavaScript",
+          "source": "https://github.com/langchain-ai/langgraph#readme",
+          "checked": "2026-09-29"
+        },
+        {
+          "name": "Mastra",
+          "url": "https://github.com/mastra-ai/mastra",
+          "description": "TypeScript framework with agents, workflows, and suspend-and-resume execution.",
+          "kind": "TypeScript framework",
+          "source": "https://github.com/mastra-ai/mastra#readme",
+          "checked": "2026-09-29"
+        },
+        {
+          "name": "Microsoft Agent Framework",
+          "url": "https://github.com/microsoft/agent-framework",
+          "description": "Framework for building agents and multi-agent workflows in Python and .NET.",
+          "kind": "Python and .NET",
+          "source": "https://github.com/microsoft/agent-framework#readme",
+          "checked": "2026-09-29"
+        },
+        {
+          "name": "OpenAI Agents SDK",
+          "url": "https://github.com/openai/openai-agents-python",
+          "description": "Python SDK for agent workflows with tools, handoffs, and tracing.",
+          "kind": "Python SDK",
+          "source": "https://github.com/openai/openai-agents-python#readme",
+          "checked": "2026-09-29"
+        },
+        {
+          "name": "Pydantic AI",
+          "url": "https://github.com/pydantic/pydantic-ai",
+          "description": "Typed Python agent framework supporting tools and multi-agent application patterns.",
+          "kind": "Python framework",
+          "source": "https://github.com/pydantic/pydantic-ai#readme",
+          "checked": "2026-09-29"
+        },
+        {
+          "name": "smolagents",
+          "url": "https://github.com/huggingface/smolagents",
+          "description": "Agent library supporting code-based tool use and managed-agent composition.",
+          "kind": "Python library",
+          "source": "https://github.com/huggingface/smolagents#readme",
+          "checked": "2026-09-29"
+        }
+      ]
+    },
+    {
+      "title": "Visual workflow builders",
+      "projects": [
+        {
+          "name": "Langflow",
+          "url": "https://github.com/langflow-ai/langflow",
+          "description": "Visual authoring environment for agent workflows with API and MCP serving.",
+          "kind": "Visual builder",
+          "source": "https://github.com/langflow-ai/langflow#readme",
+          "checked": "2026-09-29"
+        },
+        {
+          "name": "n8n",
+          "url": "https://github.com/n8n-io/n8n",
+          "description": "Workflow automation platform combining AI agents, application integrations, and custom code.",
+          "kind": "Self-hosted or cloud",
+          "source": "https://github.com/n8n-io/n8n#readme",
+          "checked": "2026-09-29"
+        }
+      ]
+    },
+    {
+      "title": "Maintenance and migration references",
+      "projects": [
+        {
+          "name": "AutoGen",
+          "url": "https://github.com/microsoft/autogen",
+          "description": "Multi-agent framework in maintenance mode; upstream directs new development toward Microsoft Agent Framework.",
+          "kind": "Maintenance mode",
+          "source": "https://github.com/microsoft/autogen#readme",
+          "checked": "2026-09-29"
+        }
+      ]
+    }
+  ],
+  "related": [
+    {
+      "name": "Agent-Analytics/awesome-multi-agent-orchestrators",
+      "url": "https://github.com/Agent-Analytics/awesome-multi-agent-orchestrators",
+      "description": "Directory of multi-agent orchestration platforms."
+    },
+    {
+      "name": "andyrewlee/awesome-agent-orchestrators",
+      "url": "https://github.com/andyrewlee/awesome-agent-orchestrators",
+      "description": "Orchestrators for coding-agent workflows."
+    },
+    {
+      "name": "vivy-yi/awesome-agent-orchestration",
+      "url": "https://github.com/vivy-yi/awesome-agent-orchestration",
+      "description": "Broader framework and multi-agent ecosystem collection."
+    }
+  ],
+  "slug": "awesome-agent-orchestration",
+  "checked": "2026-09-29"
+}
