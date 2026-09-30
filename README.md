@@ -10,6 +10,10 @@
 
 12 projects · Upstream documentation checked 2026-09-29. Curated by [agentlist.io](https://www.agentlist.io).
 
+**Move from one agent to coordinated work.**
+
+Start with the coordination problem: separate independent tasks, pass work between specialists, or keep a long-running workflow recoverable. Adding agents also adds state, handoffs, and failure cases. Choose the smallest coordination model that makes those responsibilities clear.
+
 Tools that compose agent steps, delegate work, or manage multi-agent workflows. Coding-agent clients and model-routing gateways are separate categories. Frameworks require application code; visual builders provide an authoring interface.
 
 ## Contents
@@ -24,9 +28,14 @@ Tools that compose agent steps, delegate work, or manage multi-agent workflows. 
 
 ## How to choose
 
-- Does it coordinate tool calls, multiple agents, deterministic workflow steps, or all three?
-- Can work pause for approval, recover from a failure, and resume with its state intact?
-- Which parts run locally, on your infrastructure, or in a vendor-managed service?
+- Works with: Can it use your agents and tools directly, or does it require rewriting them in its own framework?
+- Runs where: Who operates the workers, queues, scheduler, and persistent state? Which parts require a hosted service?
+- Needs access to: How are tools, credentials, and workspaces assigned to individual agents? Can concurrent workers change the same files?
+- Keeps what: Are task state, decisions, artifacts, and handoffs durable? Can failed work resume without repeating completed actions?
+- Human involvement: Where can you approve a plan, redirect a worker, inspect a diff, or stop the whole workflow?
+- Main limitation: How does it handle conflicting edits, failed handoffs, retries, and duplicate work? Distinguish documented guarantees from examples.
+
+Use these questions to narrow your shortlist. An entry’s source link records the documentation used for its description; it does not mean every question above has been answered or tested. Treat undocumented capabilities as unknown, and confirm requirements against the linked project before adopting it.
 
 ## Code-first frameworks
 
