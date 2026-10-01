@@ -11,6 +11,200 @@
     "Human involvement: Where can you approve a plan, redirect a worker, inspect a diff, or stop the whole workflow?",
     "Main limitation: How does it handle conflicting edits, failed handoffs, retries, and duplicate work? Distinguish documented guarantees from examples."
   ],
+  "decisions": [
+    {
+      "need": "Rewrite agents in a framework, or drive a harness you already run?",
+      "fit": "LangGraph and MetaGPT are code-first. Paperclip and GitHub Agentic Workflows drive existing agents.",
+      "distinction": "Paperclip uses agents such as Claude Code and Codex and is a control plane for them, not a new model loop. LangGraph and MetaGPT are frameworks where you define the agents.",
+      "unknown": "Unknown whether LangGraph or MetaGPT can supervise an unmodified Claude Code install. Their READMEs define the agents in the framework.",
+      "sources": [
+        {
+          "name": "LangGraph",
+          "url": "https://github.com/langchain-ai/langgraph#readme"
+        },
+        {
+          "name": "MetaGPT",
+          "url": "https://github.com/FoundationAgents/MetaGPT#readme"
+        },
+        {
+          "name": "Paperclip",
+          "url": "https://github.com/paperclipai/paperclip#readme"
+        },
+        {
+          "name": "GitHub Agentic Workflows",
+          "url": "https://github.com/github/gh-aw#readme"
+        }
+      ]
+    },
+    {
+      "need": "Call a library in your process, or operate a visual builder?",
+      "fit": "smolagents and LangGraph are in-process libraries. n8n is a visual builder with Docker and a cloud editor.",
+      "distinction": "n8n combines a visual canvas with code and runs self-hosted or in the cloud, with human approvals listed as a capability. smolagents is a Python library you import, not that canvas.",
+      "unknown": "Unknown which n8n templates require the cloud editor rather than the Docker install. The n8n README shows both.",
+      "sources": [
+        {
+          "name": "smolagents",
+          "url": "https://github.com/huggingface/smolagents#readme"
+        },
+        {
+          "name": "LangGraph",
+          "url": "https://github.com/langchain-ai/langgraph#readme"
+        },
+        {
+          "name": "n8n",
+          "url": "https://github.com/n8n-io/n8n#readme"
+        }
+      ]
+    },
+    {
+      "need": "Redistribute n8n inside a product we charge for?",
+      "fit": "n8n under the Sustainable Use License. Activepieces is a separate MIT-plus-enterprise split.",
+      "distinction": "LICENSE.md allows use only for your own internal business purposes, or non-commercial or personal use, and distribution only free of charge for non-commercial purposes. .ee files need an Enterprise license.",
+      "unknown": "Unknown which shipped nodes are .ee code. The license puts those files outside the Sustainable Use License.",
+      "sources": [
+        {
+          "name": "n8n",
+          "url": "https://raw.githubusercontent.com/n8n-io/n8n/master/LICENSE.md"
+        },
+        {
+          "name": "Activepieces",
+          "url": "https://raw.githubusercontent.com/activepieces/activepieces/main/LICENSE"
+        }
+      ]
+    },
+    {
+      "need": "Host Dify as a multi-tenant service for other customers?",
+      "fit": "Dify. n8n is limited by the Sustainable Use License, not by this workspace clause.",
+      "distinction": "Dify's modified Apache-2.0 license says you may not use the source to operate a multi-tenant environment unless Dify authorizes it in writing. It defines one tenant as one workspace.",
+      "unknown": "Unknown whether a specific host already has that written authorization. Removing the console logo also needs authorization.",
+      "sources": [
+        {
+          "name": "Dify",
+          "url": "https://raw.githubusercontent.com/langgenius/dify/main/LICENSE"
+        },
+        {
+          "name": "n8n",
+          "url": "https://raw.githubusercontent.com/n8n-io/n8n/master/LICENSE.md"
+        }
+      ]
+    },
+    {
+      "need": "Start a new Microsoft project on AutoGen?",
+      "fit": "AutoGen is in maintenance mode. Microsoft Agent Framework is the README's destination for new users.",
+      "distinction": "AutoGen will not receive new features and is community managed. Its legal notice puts documentation under CC-BY-4.0 and code under the MIT License in LICENSE-CODE.",
+      "unknown": "Unknown how long community maintainers will ship fixes. Contributions are limited to bug fixes, security patches, and documentation.",
+      "sources": [
+        {
+          "name": "AutoGen",
+          "url": "https://github.com/microsoft/autogen#readme"
+        },
+        {
+          "name": "Microsoft Agent Framework",
+          "url": "https://github.com/microsoft/agent-framework#readme"
+        }
+      ]
+    },
+    {
+      "need": "Start new work in Semantic Kernel rather than its successor?",
+      "fit": "Semantic Kernel's banner points to Microsoft Agent Framework. AutoGen's README points there too.",
+      "distinction": "The banner says Semantic Kernel is now Microsoft Agent Framework. The same README still documents agents, plugins, and a process model, and says the code is under the MIT license.",
+      "unknown": "Unknown whether the Python, .NET, and Java packages still accept features. The banner tells new users to start on Microsoft Agent Framework.",
+      "sources": [
+        {
+          "name": "Semantic Kernel",
+          "url": "https://github.com/microsoft/semantic-kernel#readme"
+        },
+        {
+          "name": "Microsoft Agent Framework",
+          "url": "https://github.com/microsoft/agent-framework#readme"
+        },
+        {
+          "name": "AutoGen",
+          "url": "https://github.com/microsoft/autogen#readme"
+        }
+      ]
+    },
+    {
+      "need": "Use OpenAI Swarm as a maintained multi-agent product?",
+      "fit": "Swarm is historical. OpenAI Agents SDK is the replacement the Swarm README names. Not Swarms or Agency Swarm.",
+      "distinction": "Swarm is experimental and educational, replaced by the OpenAI Agents SDK, and a run stores no state between calls unless you pass the earlier messages back in.",
+      "unknown": "Unknown which educational examples still match today's Agents SDK. Migrate for maintained use.",
+      "sources": [
+        {
+          "name": "Swarm",
+          "url": "https://github.com/openai/swarm#readme"
+        },
+        {
+          "name": "OpenAI Agents SDK",
+          "url": "https://github.com/openai/openai-agents-python#readme"
+        },
+        {
+          "name": "Swarms",
+          "url": "https://github.com/kyegomez/swarms#readme"
+        },
+        {
+          "name": "Agency Swarm",
+          "url": "https://github.com/VRSEN/agency-swarm#readme"
+        }
+      ]
+    },
+    {
+      "need": "Pause a run so a person can inspect or approve it?",
+      "fit": "LangGraph and mcp-agent document a human stop. MetaGPT's quickstart and Rivet's README do not.",
+      "distinction": "LangGraph lets a person inspect and modify agent state during execution. mcp-agent shows a human-input signal. MetaGPT's usage example writes ./workspace with no approval step.",
+      "unknown": "Unknown whether MetaGPT or Rivet can pause before a write. Those README pages do not show an approval stop.",
+      "sources": [
+        {
+          "name": "LangGraph",
+          "url": "https://github.com/langchain-ai/langgraph#readme"
+        },
+        {
+          "name": "mcp-agent",
+          "url": "https://github.com/lastmile-ai/mcp-agent#readme"
+        },
+        {
+          "name": "MetaGPT",
+          "url": "https://github.com/FoundationAgents/MetaGPT#readme"
+        },
+        {
+          "name": "Rivet",
+          "url": "https://github.com/Ironclad/rivet#readme"
+        }
+      ]
+    },
+    {
+      "need": "Let the agent job write to the GitHub repo itself?",
+      "fit": "GitHub Agentic Workflows. Paperclip is another control plane and does not use this Actions split.",
+      "distinction": "Agent jobs are read-only and sandboxed by default, and configured writes go through separate safe-outputs jobs. Those controls are configurable.",
+      "unknown": "Unknown how a given workflow changed the defaults. Runs can still go wrong, so authors must review permissions.",
+      "sources": [
+        {
+          "name": "GitHub Agentic Workflows",
+          "url": "https://github.com/github/gh-aw#readme"
+        },
+        {
+          "name": "Paperclip",
+          "url": "https://github.com/paperclipai/paperclip#readme"
+        }
+      ]
+    },
+    {
+      "need": "Treat all of Activepieces as MIT?",
+      "fit": "Activepieces. n8n's non-enterprise code is Sustainable Use, not this MIT split.",
+      "distinction": "The LICENSE grants MIT for content outside packages/ee and packages/server/api/src/app/ee. Those enterprise paths use the separate license in packages/ee/LICENSE.",
+      "unknown": "Unknown what packages/ee/LICENSE permits. This page names that file and does not include its terms.",
+      "sources": [
+        {
+          "name": "Activepieces",
+          "url": "https://raw.githubusercontent.com/activepieces/activepieces/main/LICENSE"
+        },
+        {
+          "name": "n8n",
+          "url": "https://raw.githubusercontent.com/n8n-io/n8n/master/LICENSE.md"
+        }
+      ]
+    }
+  ],
   "sections": [
     {
       "title": "Code-first frameworks",
@@ -18,74 +212,234 @@
         {
           "name": "Agno",
           "url": "https://github.com/agno-agi/agno",
-          "description": "Python framework for building agents, teams, and workflows.",
+          "description": "Python framework and AgentOS runtime for agents, teams, and workflows. Define agents in the SDK, serve an API, and manage runs in the AgentOS UI. Docker starters store sessions, memory, and traces in a database you operate. Runs can pause for confirmation and block tools needing approval. Telemetry per run, unless AGNO_TELEMETRY is false, omits prompts and outputs.",
           "kind": "Python framework",
           "source": "https://github.com/agno-agi/agno#readme",
-          "checked": "2026-09-29"
+          "checked": "2026-09-30"
         },
         {
           "name": "CrewAI",
           "url": "https://github.com/crewAIInc/crewAI",
-          "description": "Framework for composing role-based agent teams and execution flows.",
+          "description": "Python framework for role-based crews and event-driven flows, running in your process against the model provider you configure. Agents and tasks can be declared in JSON or Python, with human input during a run and checkpointing. CrewAI AMP is a separate commercial control plane, not part of the open-source process. Conflicting edits to the same files have no described resolution.",
           "kind": "Python framework",
           "source": "https://github.com/crewAIInc/crewAI#readme",
-          "checked": "2026-09-29"
+          "checked": "2026-09-30"
         },
         {
           "name": "Google ADK",
           "url": "https://github.com/google/adk-python",
-          "description": "Python toolkit for composing agents and workflow execution.",
+          "description": "Code-first Python toolkit for agents and graph workflows, with a tool-confirmation step before a guarded tool runs. Optimized for Gemini, not tied to one model. adk web is a local dev UI; Cloud Run and Vertex AI Agent Engine are deploy targets. google/adk-go and google/adk-js are sibling kits, not separate rows. No export format beyond the deployed app is documented.",
           "kind": "Python SDK",
           "source": "https://github.com/google/adk-python#readme",
-          "checked": "2026-09-29"
+          "checked": "2026-09-30"
         },
         {
           "name": "LangGraph",
           "url": "https://github.com/langchain-ai/langgraph",
-          "description": "Graph-based orchestration framework for long-running, stateful agent workflows.",
-          "kind": "Python and JavaScript",
+          "description": "Low-level Python library for long-running stateful workflows, usable without LangChain. LangGraph.js is the JavaScript library and is not a separate row. A persisted run resumes after a failure, and a person can inspect and edit state at an interrupt. LangSmith is a separate tracing and deployment product. How two workers merge conflicting file edits is not specified.",
+          "kind": "Python library",
           "source": "https://github.com/langchain-ai/langgraph#readme",
-          "checked": "2026-09-29"
+          "checked": "2026-09-30"
         },
         {
           "name": "Mastra",
           "url": "https://github.com/mastra-ai/mastra",
-          "description": "TypeScript framework with agents, workflows, and suspend-and-resume execution.",
+          "description": "TypeScript framework for agents and graph workflows you embed in a Node app or run as its own server, with a local Studio UI. Storage keeps a suspended run so a person can approve or supply input before it resumes. Model calls use the provider credentials you configure. Defining or running a workflow does not require a hosted Mastra service.",
           "kind": "TypeScript framework",
           "source": "https://github.com/mastra-ai/mastra#readme",
-          "checked": "2026-09-29"
+          "checked": "2026-09-30"
         },
         {
           "name": "Microsoft Agent Framework",
           "url": "https://github.com/microsoft/agent-framework",
-          "description": "Framework for building agents and multi-agent workflows in Python and .NET.",
+          "description": "Python and .NET framework for agents and graph workflows, including sequential, concurrent, handoff, and group patterns, with checkpointing and human-in-the-loop control. The Go SDK, microsoft/agent-framework-go, is not a third row. Samples show Microsoft Foundry and other providers inside an app you run. AutoGen and Semantic Kernel direct new users here and are no longer the starting point.",
           "kind": "Python and .NET",
           "source": "https://github.com/microsoft/agent-framework#readme",
-          "checked": "2026-09-29"
+          "checked": "2026-09-30"
         },
         {
           "name": "OpenAI Agents SDK",
           "url": "https://github.com/openai/openai-agents-python",
-          "description": "Python SDK for agent workflows with tools, handoffs, and tracing.",
+          "description": "Python SDK for agents, tools, guardrails, sessions, and handoffs. The JavaScript library is openai/openai-agents-js and is not a separate row. Runs execute in your process, with optional sandbox agents, an optional Redis extra for sessions, and documented human-in-the-loop checks. The SDK can call OpenAI APIs or many other chat models. It is not a visual builder.",
           "kind": "Python SDK",
           "source": "https://github.com/openai/openai-agents-python#readme",
-          "checked": "2026-09-29"
+          "checked": "2026-09-30"
         },
         {
           "name": "Pydantic AI",
           "url": "https://github.com/pydantic/pydantic-ai",
-          "description": "Typed Python agent framework supporting tools and multi-agent application patterns.",
+          "description": "Typed Python agent loop for tools and structured output, from a script, a terminal, or a voice session. Human-in-the-loop tool approval is documented, and optional durable execution, including Temporal, can replay model and tool calls after a restart. Pydantic Graph and Pydantic Evals are separate packages. Logfire and the model gateway are optional and not required for a local run.",
           "kind": "Python framework",
           "source": "https://github.com/pydantic/pydantic-ai#readme",
-          "checked": "2026-09-29"
+          "checked": "2026-09-30"
         },
         {
           "name": "smolagents",
           "url": "https://github.com/huggingface/smolagents",
-          "description": "Agent library supporting code-based tool use and managed-agent composition.",
+          "description": "Python library whose CodeAgent writes actions as Python code, beside a ToolCallingAgent for ordinary tool calls, with multi-agent hierarchies. Code can run in Blaxel, E2B, Modal, or Docker. LocalPythonExecutor is not a security sandbox. You pick the model: local transformers, Ollama, or a hosted API. Hugging Face Hub push is documented. No human approval is required before code runs.",
           "kind": "Python library",
           "source": "https://github.com/huggingface/smolagents#readme",
-          "checked": "2026-09-29"
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "CAMEL",
+          "url": "https://github.com/camel-ai/camel",
+          "description": "Python research framework for multi-agent role play, agent societies, and tool-using chat agents. The quickstart runs in your process with a model API key and keeps agent memory across steps. A linked cookbook covers human oversight and tool approval. Orchestration is one research use, alongside data generation and simulated environments, and the ChatAgent quickstart does not document a durable checkpoint store.",
+          "kind": "Python framework",
+          "source": "https://github.com/camel-ai/camel#readme",
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "AG2",
+          "url": "https://github.com/ag2ai/ag2",
+          "description": "Python framework under Apache-2.0 for agents cooperating over a Network of a hub, typed channels, and a write-ahead log. A person can pause to confirm or supply missing information. AG2 v1 is not the classic autogen import; that code is ag2ai/ag2-classic, which remains maintained. AG2 continues AutoGen's ideas in the community and does not replace Microsoft Agent Framework.",
+          "kind": "Python framework",
+          "source": "https://github.com/ag2ai/ag2#readme",
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "Haystack",
+          "url": "https://github.com/deepset-ai/haystack",
+          "description": "Python framework for retrieval pipelines and, separately, agent workflows. Orchestration is one use, not the whole project, which also centers retrieval, routing, memory, and generation for search and RAG. Components run in your process, and Hayhooks exposes a pipeline over HTTP or MCP. A required human approval step is not described, and you bring the model and the document stores.",
+          "kind": "Python framework",
+          "source": "https://github.com/deepset-ai/haystack#readme",
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "Swarms",
+          "url": "https://github.com/kyegomez/swarms",
+          "description": "Python library for composing agents into sequential, concurrent, hierarchical, and group-chat workflows. An agent is a model plus tools and memory, runs in your Python process, can call MCP servers by URL, and uses WORKSPACE_DIR as the documented workspace path. The first-agent example does not describe a required human approval gate, and no merge rule is given for conflicting edits across agents.",
+          "kind": "Python framework",
+          "source": "https://github.com/kyegomez/swarms#readme",
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "Agency Swarm",
+          "url": "https://github.com/VRSEN/agency-swarm",
+          "description": "Python framework that builds multi-agent agencies on top of the OpenAI Agents SDK, with roles, tools, and communication only along flows you declare through a send_message tool. Other model vendors can be reached through LiteLLM, and you persist threads with load and save callbacks. A person-approval step is not documented, and this layer does not replace the Agents SDK.",
+          "kind": "Python framework",
+          "source": "https://github.com/VRSEN/agency-swarm#readme",
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "VoltAgent",
+          "url": "https://github.com/VoltAgent/voltagent",
+          "description": "TypeScript framework for typed agents, tools, MCP, and declarative multi-step workflows. The expense example suspends until a person submits a decision, then resumes. Memory can use an adapter such as local LibSQL. The dev server links to the VoltOps console, a separate cloud or self-hosted observability and deploy surface, not required to define the agent in code.",
+          "kind": "TypeScript framework",
+          "source": "https://github.com/VoltAgent/voltagent#readme",
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "AX",
+          "url": "https://github.com/google/ax",
+          "description": "Kubernetes orchestrator for agent tasks, not a library you import. Apply Task and Workspace manifests. Agent Substrate sandboxes each task with CPU and memory limits. ax suspend and ax resume pause and continue an idle task. Needs a cluster with Substrate and the gRPC CLI. The API may break before a stable release. ax ssh looks inside a running sandbox.",
+          "kind": "Kubernetes orchestrator",
+          "source": "https://github.com/google/ax#readme",
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "Strands Agents",
+          "url": "https://github.com/strands-agents/harness-sdk",
+          "description": "Python and TypeScript SDK for an agent loop in your process, with no hosted control plane. A harness package builds a preassembled agent. The lower-level SDK attaches tools, providers, sessions, hooks, MCP, and multi-agent patterns for Amazon Bedrock, Anthropic, OpenAI, and Gemini. Hooks can intercept a step. A separate approval service is not required.",
+          "kind": "Python and TypeScript",
+          "source": "https://github.com/strands-agents/harness-sdk#readme",
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "MetaGPT",
+          "url": "https://github.com/FoundationAgents/MetaGPT",
+          "description": "Python framework that turns a one-line requirement into a software workspace by walking role steps such as product, architecture, and engineering, writing a repository under ./workspace from model settings in ~/.metagpt/config2.yaml. That quickstart does not document a human approval stop before the write.",
+          "kind": "Python framework",
+          "source": "https://github.com/FoundationAgents/MetaGPT#readme",
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "PraisonAI",
+          "url": "https://github.com/MervinPraison/PraisonAI",
+          "description": "Python library for agents, handoffs, and AgentFlow graphs with route, parallel, and repeat steps. An approval flag is a human gate before a risky tool runs. Memory persists when you pass a user id. Execution can use a shared Docker sandbox or a hosted agent runtime instead of your machine. How two agents merge conflicting edits is not documented.",
+          "kind": "Python framework",
+          "source": "https://github.com/MervinPraison/PraisonAI#readme",
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "Claude Agent SDK",
+          "url": "https://github.com/anthropics/claude-agent-sdk-python",
+          "description": "Python SDK for Claude Code's agent loop, not a multi-vendor orchestrator. The Claude Code CLI is bundled by default, or you point at another path. Permissions stay with Claude Code: allowed_tools auto-approves listed tools and leaves the rest, which follow permission_mode or a can_use_tool callback. Custom tools are in-process MCP servers. It does not switch among unrelated agent products.",
+          "kind": "Python SDK",
+          "source": "https://github.com/anthropics/claude-agent-sdk-python#readme",
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "Agent Squad",
+          "url": "https://github.com/2FastLabs/agent-squad",
+          "description": "Routes each user turn to one registered agent, with Python, TypeScript, and on-device Swift. A classifier uses descriptions and history, stores the exchange, and a supervisor can call other agents as tools. Python and TypeScript run on a laptop, in containers, or on Lambda; Swift stays on Apple devices. Moved from awslabs/agent-squad. No human approval step on the basic route.",
+          "kind": "Multi-runtime library",
+          "source": "https://github.com/2FastLabs/agent-squad#readme",
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "Griptape",
+          "url": "https://github.com/griptape-ai/griptape",
+          "description": "Python framework for a single-task agent, a task pipeline, or parallel tasks. Swappable drivers change the model provider without rewriting the graph. Conversation memory differs from task memory, which keeps large outputs off the prompt. Runs stay in your Python process. Griptape Nodes is a separate visual desktop app, not its own row. No required human approval step is described.",
+          "kind": "Python framework",
+          "source": "https://github.com/griptape-ai/griptape#readme",
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "mcp-agent",
+          "url": "https://github.com/lastmile-ai/mcp-agent",
+          "description": "Python framework connecting agents to Model Context Protocol servers and a few workflow patterns. The same agent code runs on asyncio or Temporal and can pause and resume without an API change. Human input is a workflow signal. The resume command is the cloud workflows path, not the asyncio quickstart. API keys go in a secrets file or the environment.",
+          "kind": "Python framework",
+          "source": "https://github.com/lastmile-ai/mcp-agent#readme",
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "ChatDev",
+          "url": "https://github.com/OpenBMB/ChatDev",
+          "description": "ChatDev 2.0, called DevAll, is a multi-agent platform: a visual canvas and a Python package for YAML workflows. Define agents and flows in configuration, launch from the local FastAPI and Vue UI or from code. Human feedback is available while a run is open, and files land under WareHouse. Older virtual-software-company mode stays on branch chatdev1.0, not the default.",
+          "kind": "Workflow platform",
+          "source": "https://github.com/OpenBMB/ChatDev#readme",
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "uAgents",
+          "url": "https://github.com/fetchai/uAgents",
+          "description": "Python library for agents messaging each other on the Fetch.ai network. Each named agent registers on the Almanac smart contract at startup, keeps a private key in a local file when no seed is passed, and can run scheduled tasks or handle incoming messages. No human approval step, and no offline mode that skips Almanac registration.",
+          "kind": "Python library",
+          "source": "https://github.com/fetchai/uAgents#readme",
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "LightAgent",
+          "url": "https://github.com/wanxingai/LightAgent",
+          "description": "Python framework for one tool-using agent, LightSwarm delegation, and LightFlow graphs. LightFlow is a DAG with retries, checkpoints, resume, and approval nodes. A human-approval hook covers selected tools and handoffs, and calls use OpenAI-compatible endpoints with MCP over stdio and SSE. Durable sessions are optional. Arbitrary Python execution is opt-in and needs an explicit sandbox boundary.",
+          "kind": "Python framework",
+          "source": "https://github.com/wanxingai/LightAgent#readme",
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "Zeroshot",
+          "url": "https://github.com/the-open-engine/zeroshot",
+          "description": "Native program turning software goals into a fixed graph: one worker implements, reviewers check, failures return to bounded repair. The graph, not a runtime agent, chooses the next step. Events go to a SQLite ledger. Local runs reuse a Codex or Claude Code login. Branch or pull-request delivery is optional. A separate human gate is not documented as required locally.",
+          "kind": "Native graph runner",
+          "source": "https://github.com/the-open-engine/zeroshot#readme",
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "Astron Agent",
+          "url": "https://github.com/iflytek/astron-agent",
+          "description": "Self-hosted platform for agent workflows, model access, MCP tools, and RPA steps, not a library you import. Quick start is Docker Compose; Helm is the other install. A hosted console is at agent.xfyun.cn, so execution is services you deploy. No human approval step is documented. Exporting a workflow as a standalone function call is not described.",
+          "kind": "Workflow platform",
+          "source": "https://github.com/iflytek/astron-agent#readme",
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "Octop",
+          "url": "https://github.com/TencentCloud/Octop",
+          "description": "Self-hosted Python assistant for several people: web dashboard, CLI, and chat gateways in one process. Switch specialist experts per task. AgentTeams is a beta multi-step coordinator. Tool approval is documented before some actions. Control-plane data defaults to SQLite under ~/.octop/. Outbound ACP can delegate to OpenCode, Claude Code, or Codex, optional runners rather than the dashboard.",
+          "kind": "Self-hosted assistant",
+          "source": "https://github.com/TencentCloud/Octop#readme",
+          "checked": "2026-09-30"
         }
       ]
     },
@@ -95,31 +449,140 @@
         {
           "name": "Langflow",
           "url": "https://github.com/langflow-ai/langflow",
-          "description": "Visual authoring environment for agent workflows with API and MCP serving.",
+          "description": "Visual builder for agent and retrieval flows: a Python server and desktop app for Windows and macOS. The local server listens on 127.0.0.1 port 7860; Docker is another path. A flow can be an API, a JSON export, or an MCP server. The playground steps through a draft while editing. No durable human-approval record apart from that playground is documented.",
           "kind": "Visual builder",
           "source": "https://github.com/langflow-ai/langflow#readme",
-          "checked": "2026-09-29"
+          "checked": "2026-09-30"
         },
         {
           "name": "n8n",
           "url": "https://github.com/n8n-io/n8n",
-          "description": "Workflow automation platform combining AI agents, application integrations, and custom code.",
-          "kind": "Self-hosted or cloud",
+          "description": "Visual canvas you run with Docker or the hosted editor. An agent step is one node type, and human approval inside a workflow is documented. Sustainable Use License on non-.ee code: own internal business purposes, or non-commercial or personal use; distribution only free of charge for non-commercial purposes. .ee files need an n8n Enterprise license. Not an OSI license.",
+          "kind": "Visual automation",
           "source": "https://github.com/n8n-io/n8n#readme",
-          "checked": "2026-09-29"
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "Activepieces",
+          "url": "https://github.com/activepieces/activepieces",
+          "description": "Visual builder that assembles automations from TypeScript pieces, including AI steps and pieces that delay a run or ask a person to approve. A self-hosted deploy path is described, and contributed pieces can also be exposed as MCP servers. Content outside packages/ee and packages/server/api/src/app/ee is MIT. Those enterprise paths have their own license, so the whole repository is not MIT.",
+          "kind": "Visual builder",
+          "source": "https://github.com/activepieces/activepieces#readme",
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "Rivet",
+          "url": "https://github.com/Ironclad/rivet",
+          "description": "Desktop app for authoring prompt graphs, plus Rivet Core, a TypeScript library that runs those graphs in your program. Binaries cover macOS, Linux, and Windows. Integrations are a fixed set: specific OpenAI and Anthropic chat models, OpenAI embeddings, and Pinecone, not an open registry of existing agents. No human approval step or durable run log is described.",
+          "kind": "Desktop and library",
+          "source": "https://github.com/Ironclad/rivet#readme",
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "Sim",
+          "url": "https://github.com/simstudioai/sim",
+          "description": "Workspace for agent workflows on a canvas, in conversation, or in code. Cloud app at sim.ai, self-hosted Docker Compose via npx sim-setup, and a macOS desktop app that can point at that deployment. Runs, logs, and schedules show in the browser workspace. No human approval step is documented. Optional code execution is a setup add-on named isolated-vm.",
+          "kind": "Visual builder",
+          "source": "https://github.com/simstudioai/sim#readme",
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "Dify",
+          "url": "https://github.com/langgenius/dify",
+          "description": "Visual workspace for agent workflows, retrieval pipelines, and model settings, in the cloud or via self-hosted Docker Compose that opens a local install page. Agents can run commands in their own sandbox, and APIs call Dify from your application. Modified Apache-2.0: operating a multi-tenant service, and removing or changing the console logo or copyright, need written authorization.",
+          "kind": "Visual platform",
+          "source": "https://github.com/langgenius/dify#readme",
+          "checked": "2026-09-30"
         }
       ]
     },
     {
-      "title": "Maintenance and migration references",
+      "title": "Control planes for existing agents",
+      "projects": [
+        {
+          "name": "Paperclip",
+          "url": "https://github.com/paperclipai/paperclip",
+          "description": "Self-hosted Node server and React UI for agents you run: Claude Code, Codex, OpenClaw, or HTTP bots. A control plane for goals, roles, budgets, and tickets, not a new model loop. Default install is local loopback, no Paperclip account. Heartbeats wake agents. Approval, pause, and budget stops let a person intervene. Org export scrubs secrets. Workspaces are separate git worktrees.",
+          "kind": "Self-hosted server",
+          "source": "https://github.com/paperclipai/paperclip#readme",
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "Symphony",
+          "url": "https://github.com/openai/symphony",
+          "description": "Control plane that turns board work into implementation runs. It is a low-key engineering preview for testing in trusted environments. A demo watches a Linear board and spawns agents such as Codex, described with the word isolated. You can implement the published spec yourself or run the experimental Elixir reference. No general workflow designer beyond that board-to-run loop is documented.",
+          "kind": "Engineering preview",
+          "source": "https://github.com/openai/symphony#readme",
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "OpenRig",
+          "url": "https://github.com/mvschwarz/openrig",
+          "description": "Multi-harness runner that boots Claude Code and Codex from a YAML spec. Not only a terminal UI: kernel, task queue, shared dashboard, and tmux TUI. Needs Node 22 or 24 on macOS or Linux; native Windows is unsupported. Setup writes hook and trust files to read first. A prompt asks if agents may run OpenRig commands without repeated permission checks.",
+          "kind": "Multi-harness runner",
+          "source": "https://github.com/mvschwarz/openrig#readme",
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "Maestro",
+          "url": "https://github.com/RunMaestro/Maestro",
+          "description": "Cross-platform desktop app for installed coding CLIs: Claude Code, OpenAI Codex, OpenCode, Factory Droid, and Copilot CLI in beta. A pass-through, so tools, skills, and logins stay with those CLIs. Auto Run sends each checklist task as its own prompt session, not a live turn. Git worktrees separate parallel agents. No export format apart from CLI session files is documented.",
+          "kind": "Desktop app",
+          "source": "https://github.com/RunMaestro/Maestro#readme",
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "GitHub Agentic Workflows",
+          "url": "https://github.com/github/gh-aw",
+          "description": "GitHub CLI extension that compiles Markdown with YAML frontmatter into a GitHub Actions workflow for existing engines, not a new model framework. Engines: GitHub Copilot, Claude Code, OpenAI Codex, Google Gemini, and Pi. Agent jobs are read-only and sandboxed by default. Configured writes use separate safe-outputs jobs. Those controls are configurable. Runs on Actions after compile can still go wrong.",
+          "kind": "Actions extension",
+          "source": "https://github.com/github/gh-aw#readme",
+          "checked": "2026-09-30"
+        }
+      ]
+    },
+    {
+      "title": "Maintenance, archived, and historical references",
       "projects": [
         {
           "name": "AutoGen",
           "url": "https://github.com/microsoft/autogen",
-          "description": "Multi-agent framework in maintenance mode; upstream directs new development toward Microsoft Agent Framework.",
+          "description": "Maintenance mode: AutoGen will not receive new features and points new users to Microsoft Agent Framework. Documentation and other content are under CC-BY-4.0, and code is under the MIT License in LICENSE-CODE. AG2 is a separate community repository, not this codebase and not a replacement for Agent Framework. Contributions are limited to bug fixes, security patches, and documentation.",
           "kind": "Maintenance mode",
           "source": "https://github.com/microsoft/autogen#readme",
-          "checked": "2026-09-29"
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "Semantic Kernel",
+          "url": "https://github.com/microsoft/semantic-kernel",
+          "description": "The banner says Semantic Kernel is now Microsoft Agent Framework. This row is a migration reference, not a live choice. The page under that banner still documents agents, plugins, and a process model for Python, .NET, and Java. The repository is MIT. A new project should follow the banner instead of starting here.",
+          "kind": "Maintenance SDK",
+          "source": "https://github.com/microsoft/semantic-kernel#readme",
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "Flowise",
+          "url": "https://github.com/FlowiseAI/Flowise",
+          "description": "Archived reference, not a live builder, and the repository is archived. It describes a visual node editor started with npm or Docker and opened in a browser on local port 3000, split across server, UI, and component packages, plus a hosted cloud offer. Treat that as a snapshot of the product, not a current builder for new work.",
+          "kind": "Archived reference",
+          "source": "https://github.com/FlowiseAI/Flowise#readme",
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "TaskWeaver",
+          "url": "https://github.com/microsoft/TaskWeaver",
+          "description": "Archived reference, not a current framework, and the repository is archived. A code-first planner and code interpreter for data analysis keeps chat history and in-memory Python values, such as data frames, between turns. Code execution defaults to a container, so Docker is part of setup. Plugins add functions the planner calls. These notes are historical, not a maintained toolkit.",
+          "kind": "Archived reference",
+          "source": "https://github.com/microsoft/TaskWeaver#readme",
+          "checked": "2026-09-30"
+        },
+        {
+          "name": "Swarm",
+          "url": "https://github.com/openai/swarm",
+          "description": "Experimental and educational, not a maintained product. Replaced by the OpenAI Agents SDK. It is a client-side loop of agents and handoffs over the Chat Completions API, and it stores no state between calls unless you pass the earlier messages back in. Migrate for maintained use. This repository is not Swarms or Agency Swarm.",
+          "kind": "Historical example",
+          "source": "https://github.com/openai/swarm#readme",
+          "checked": "2026-09-30"
         }
       ]
     }
@@ -128,20 +591,35 @@
     {
       "name": "Agent-Analytics/awesome-multi-agent-orchestrators",
       "url": "https://github.com/Agent-Analytics/awesome-multi-agent-orchestrators",
-      "description": "Directory of multi-agent orchestration platforms."
+      "description": "Directory of multi-agent orchestrators, narrower than the general agent catalogs."
     },
     {
       "name": "andyrewlee/awesome-agent-orchestrators",
       "url": "https://github.com/andyrewlee/awesome-agent-orchestrators",
-      "description": "Orchestrators for coding-agent workflows."
+      "description": "Long list of orchestrators. Some entries are coding-agent clients rather than frameworks."
     },
     {
       "name": "vivy-yi/awesome-agent-orchestration",
       "url": "https://github.com/vivy-yi/awesome-agent-orchestration",
-      "description": "Broader framework and multi-agent ecosystem collection."
+      "description": "Broad catalog of agent frameworks and protocols. The default branch is master."
+    },
+    {
+      "name": "kaushikb11/awesome-llm-agents",
+      "url": "https://github.com/kaushikb11/awesome-llm-agents",
+      "description": "Curated LLM agent frameworks, narrower than the thousand-link catalogs."
+    },
+    {
+      "name": "kyrolabs/awesome-agents",
+      "url": "https://github.com/kyrolabs/awesome-agents",
+      "description": "Active list of agent projects. Broad enough that many rows are not orchestration tools."
+    },
+    {
+      "name": "e2b-dev/awesome-ai-agents",
+      "url": "https://github.com/e2b-dev/awesome-ai-agents",
+      "description": "Very wide catalog of autonomous agents. A discovery index, not an orchestration shortlist."
     }
   ],
   "slug": "awesome-agent-orchestration",
-  "checked": "2026-09-29",
+  "checked": "2026-09-30",
   "introduction": "Start with the coordination problem: separate independent tasks, pass work between specialists, or keep a long-running workflow recoverable. Adding agents also adds state, handoffs, and failure cases. Choose the smallest coordination model that makes those responsibilities clear."
 }
