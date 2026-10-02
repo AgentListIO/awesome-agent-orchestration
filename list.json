@@ -538,6 +538,14 @@
           "kind": "Actions extension",
           "source": "https://github.com/github/gh-aw#readme",
           "checked": "2026-09-30"
+        },
+        {
+          "name": "YYLO",
+          "url": "https://github.com/yylo-dev/yylo",
+          "description": "npm-installable command-line orchestrator that runs installed coding agents such as Pi and Claude Code. Typed task and merge commands give each task a dedicated Git worktree and land it through a guarded native merge; watch commands only observe existing runs. Receipts back repository changes and evidence. The YYLO Ledger record store is a separate CLI it delegates to, not a bundled implementation.",
+          "kind": "CLI orchestrator",
+          "source": "https://github.com/yylo-dev/yylo#readme",
+          "checked": "2026-10-02"
         }
       ]
     },
