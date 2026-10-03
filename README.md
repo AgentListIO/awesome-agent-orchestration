@@ -8,7 +8,7 @@
 
 > Frameworks and visual tools for agent coordination, durable workflows, and human approvals.
 
-45 projects · Upstream documentation checked 2026-09-30. Curated by [agentlist.io](https://www.agentlist.io).
+46 projects · Upstream documentation checked 2026-09-30–2026-10-03. Curated by [agentlist.io](https://www.agentlist.io).
 
 **Move from one agent to coordinated work.**
 
@@ -104,6 +104,7 @@ Start with your requirement. These examples highlight documented differences; th
 - [OpenRig](https://github.com/mvschwarz/openrig) - Multi-harness runner that boots Claude Code and Codex from a YAML spec. Not only a terminal UI: kernel, task queue, shared dashboard, and tmux TUI. Needs Node 22 or 24 on macOS or Linux; native Windows is unsupported. Setup writes hook and trust files to read first. A prompt asks if agents may run OpenRig commands without repeated permission checks. **Multi-harness runner.**
 - [Maestro](https://github.com/RunMaestro/Maestro) - Cross-platform desktop app for installed coding CLIs: Claude Code, OpenAI Codex, OpenCode, Factory Droid, and Copilot CLI in beta. A pass-through, so tools, skills, and logins stay with those CLIs. Auto Run sends each checklist task as its own prompt session, not a live turn. Git worktrees separate parallel agents. No export format apart from CLI session files is documented. **Desktop app.**
 - [GitHub Agentic Workflows](https://github.com/github/gh-aw) - GitHub CLI extension that compiles Markdown with YAML frontmatter into a GitHub Actions workflow for existing engines, not a new model framework. Engines: GitHub Copilot, Claude Code, OpenAI Codex, Google Gemini, and Pi. Agent jobs are read-only and sandboxed by default. Configured writes use separate safe-outputs jobs. Those controls are configurable. Runs on Actions after compile can still go wrong. **Actions extension.**
+- [Tale](https://github.com/tale-project/tale) - Project workspace for assigning tasks to configured coding runtimes. A project agent combines its runtime, model, instructions, and allowed equipment. Assignment and starting a run are separate actions; reports and collected files return to the task for review. An equipped manager agent can start other agents on ready work. **Project workspace.**
 
 ## Maintenance, archived, and historical references
 
