@@ -538,6 +538,14 @@
           "kind": "Actions extension",
           "source": "https://github.com/github/gh-aw#readme",
           "checked": "2026-09-30"
+        },
+        {
+          "name": "Tale",
+          "url": "https://github.com/tale-project/tale",
+          "description": "Project workspace for assigning tasks to configured coding runtimes. A project agent combines its runtime, model, instructions, and allowed equipment. Assignment and starting a run are separate actions; reports and collected files return to the task for review. An equipped manager agent can start other agents on ready work.",
+          "kind": "Project workspace",
+          "source": "https://docs.tale.dev/platform/projects/project-agents",
+          "checked": "2026-10-03"
         }
       ]
     },
