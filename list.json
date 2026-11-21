@@ -516,6 +516,14 @@
           "checked": "2026-09-30"
         },
         {
+          "name": "Open Agent API",
+          "url": "https://github.com/jiangxingfan1-coder/Open-Agent-API",
+          "description": "Self-hosted gateway and workflow runtime for existing agents. Applications call published agents with scoped keys while the gateway maintains run state and separate operator approvals. OAA-Lang workflows can delegate steps to other published agents. A recovering read-only delegation can reuse its completed child result; a delegated action with an unknown outcome requires operator confirmation before resuming.",
+          "kind": "Self-hosted gateway and runtime",
+          "source": "https://github.com/jiangxingfan1-coder/Open-Agent-API/blob/v0.0.64/docs/language.md",
+          "checked": "2026-11-22"
+        },
+        {
           "name": "OpenRig",
           "url": "https://github.com/mvschwarz/openrig",
           "description": "Multi-harness runner that boots Claude Code and Codex from a YAML spec. Not only a terminal UI: kernel, task queue, shared dashboard, and tmux TUI. Needs Node 22 or 24 on macOS or Linux; native Windows is unsupported. Setup writes hook and trust files to read first. A prompt asks if agents may run OpenRig commands without repeated permission checks.",

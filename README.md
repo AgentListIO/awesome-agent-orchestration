@@ -8,7 +8,7 @@
 
 > Frameworks and visual tools for agent coordination, durable workflows, and human approvals.
 
-45 projects · Upstream documentation checked 2026-09-30. Curated by [agentlist.io](https://www.agentlist.io).
+46 projects · Upstream documentation checked 2026-09-30–2026-11-22. Curated by [agentlist.io](https://www.agentlist.io).
 
 **Move from one agent to coordinated work.**
 
@@ -101,6 +101,7 @@ Start with your requirement. These examples highlight documented differences; th
 
 - [Paperclip](https://github.com/paperclipai/paperclip) - Self-hosted Node server and React UI for agents you run: Claude Code, Codex, OpenClaw, or HTTP bots. A control plane for goals, roles, budgets, and tickets, not a new model loop. Default install is local loopback, no Paperclip account. Heartbeats wake agents. Approval, pause, and budget stops let a person intervene. Org export scrubs secrets. Workspaces are separate git worktrees. **Self-hosted server.**
 - [Symphony](https://github.com/openai/symphony) - Control plane that turns board work into implementation runs. It is a low-key engineering preview for testing in trusted environments. A demo watches a Linear board and spawns agents such as Codex, described with the word isolated. You can implement the published spec yourself or run the experimental Elixir reference. No general workflow designer beyond that board-to-run loop is documented. **Engineering preview.**
+- [Open Agent API](https://github.com/jiangxingfan1-coder/Open-Agent-API) - Self-hosted gateway and workflow runtime for existing agents. Applications call published agents with scoped keys while the gateway maintains run state and separate operator approvals. OAA-Lang workflows can delegate steps to other published agents. A recovering read-only delegation can reuse its completed child result; a delegated action with an unknown outcome requires operator confirmation before resuming. **Self-hosted gateway and runtime.**
 - [OpenRig](https://github.com/mvschwarz/openrig) - Multi-harness runner that boots Claude Code and Codex from a YAML spec. Not only a terminal UI: kernel, task queue, shared dashboard, and tmux TUI. Needs Node 22 or 24 on macOS or Linux; native Windows is unsupported. Setup writes hook and trust files to read first. A prompt asks if agents may run OpenRig commands without repeated permission checks. **Multi-harness runner.**
 - [Maestro](https://github.com/RunMaestro/Maestro) - Cross-platform desktop app for installed coding CLIs: Claude Code, OpenAI Codex, OpenCode, Factory Droid, and Copilot CLI in beta. A pass-through, so tools, skills, and logins stay with those CLIs. Auto Run sends each checklist task as its own prompt session, not a live turn. Git worktrees separate parallel agents. No export format apart from CLI session files is documented. **Desktop app.**
 - [GitHub Agentic Workflows](https://github.com/github/gh-aw) - GitHub CLI extension that compiles Markdown with YAML frontmatter into a GitHub Actions workflow for existing engines, not a new model framework. Engines: GitHub Copilot, Claude Code, OpenAI Codex, Google Gemini, and Pi. Agent jobs are read-only and sandboxed by default. Configured writes use separate safe-outputs jobs. Those controls are configurable. Runs on Actions after compile can still go wrong. **Actions extension.**
